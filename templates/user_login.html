@@ -1,0 +1,36 @@
+{% extends 'dummy.html' %}
+
+{% block title %}
+    <title>Login Page</title>
+{% endblock %}
+
+{% block body_block %}
+
+
+<style>
+    body{
+       background: rgb(49, 200, 223);
+       background:radial-gradient(circle,rgb(180, 206, 47) 0%,rgb(220, 45, 205) 100%);
+       font-size: 1.2em;
+    }
+    
+
+
+</style>
+<body>
+<center>
+    <h1>Login Form</h1>
+        <form method="POST">
+            {% csrf_token %}
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username"><br>
+                <br>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password"><br><br>
+            <input type="submit" value="LogIn" class="btn btn-success">
+        </form>
+    </center>
+
+    {% endblock %}
+
+    </body>

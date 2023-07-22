@@ -1,40 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>registration</title>
-    
-    <style>
-        body{
-            font-family: sans-serif;
-            background: rgb(196, 208, 60);
-            background:radial-gradient(circle,rgb(224, 61, 213) 0%,rgb(215, 163, 36) 100%);
-            font-size: 1.2em;
-            color: aliceblue;
-        }
-        input[type="submit"]{
-            border: none;
-            font-size: 0.5cm;
-        }
-        h1{
-            color: black;
-        }
-    </style>
+{% extends 'dummy.html' %}
 
-    
-</head>
+{% block title %}
+    <title>Registration Page</title>
+{% endblock %}
+
+{% block body_block %}
+
+<style>
+     body{
+       background: rgb(49, 200, 223);
+       background:radial-gradient(circle,rgb(194, 225, 35) 0%,rgb(220, 45, 205) 100%);
+       font-size: 1.2em;
+    }
+
+</style>
 <body>
-    <center>
-        <h1>Registration</h1>
+<center>
+    <h1>Registration Form</h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{usfo.as_p}}
-            {{pfo.as_p}}
 
-            
-            <input type="submit" value="Registration">
+                {{usfo.as_p}}
+                {{pfo.as_p}}
+            <input type="submit" value="registration">
         </form>
     </center>
+
+    {% endblock %}
 </body>
-</html>
