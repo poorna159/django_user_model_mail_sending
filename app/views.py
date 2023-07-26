@@ -40,7 +40,7 @@ def registration(request):
                       fail_silently=False
                           )
 
-            return HttpResponse('Registration is Succeffully check in admin')
+        return HttpResponse('Registration is Succeffully check in admin')
 
 
     return render(request,'registration.html',d)
@@ -75,3 +75,47 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('home'))
+
+
+
+@login_required
+def display_details(request):
+    username=request.session.get('username')
+    UO=User.objects.get(username=username)
+    PO=Profile.objects.get(username=UO)
+
+    d={'UO':UO,'PO':PO}
+    return render(request,'display_details.html',d)
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        PW=request.POST.get('PW')
+        UN=request.session.get('username')
+        UO=User.objects.get(username=UN)
+        UO.set_password(PW)
+        UO.save()
+
+        return HttpResponse('password is updated')
+    return render(request,'change_password.html')
+
+
+
+def reset_password(request):
+    if request.method =='POST':
+        un=request.POST.get('un')
+        pw=request.POST.get('pw')
+        rwp=request.POST.get('rwp')
+        LUO=User.objects.filter(username=un)
+        if LUO:
+            if pw==rwp:
+                UO=LUO[0]
+                UO.set_password(pw)
+                UO.save()
+                return HttpResponse('reset password is done')
+            else:
+                return HttpResponse('not match')
+        else:
+            return HttpResponse('invalid username')
+    return render(request,'reset_password.html')
+

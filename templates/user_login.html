@@ -6,16 +6,15 @@
 
 {% block body_block %}
 
-
 <style>
-    body{
-       background: rgb(49, 200, 223);
-       background:radial-gradient(circle,rgb(180, 206, 47) 0%,rgb(220, 45, 205) 100%);
-       font-size: 1.2em;
-    }
-    
-
-
+     body{
+    font-family: initial;
+    background-color:rgb(82, 174, 36);
+    background: radial-gradient(circle,rgb(188, 54, 9) 0%,rgb(86, 224, 59) 100%);
+    font-size: 1.2em;
+    color: aliceblue;
+  
+  }
 </style>
 <body>
 <center>
@@ -27,8 +26,16 @@
                 <br>
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password"><br><br>
+                
             <input type="submit" value="LogIn" class="btn btn-success">
+<br>
+
+
         </form>
+        <br>
+       
+        <a href="{% url 'reset_password' %}" class="btn btn-danger">reset_password</a>
+
     </center>
 
     {% endblock %}

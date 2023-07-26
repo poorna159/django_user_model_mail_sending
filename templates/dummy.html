@@ -14,41 +14,46 @@
 
 <style>
   nav{
-    background-color: skyblue;
-    padding: 5px;
+    background-color: rgb(161, 46, 218);
+    padding: 3px;
     border-radius: 20px;
   }
   a{
     text-align: center;
-    color: black;
+    color: rgb(249, 239, 239);
   }
   body{
     font-family: initial;
-    background-color:rgb(196, 208, 60);
-    background: radial-gradient(circle,rgb(224,61,213) 0%,rgb(215,163,36) 100%);
+    background-color:rgb(82, 174, 36);
+    background: radial-gradient(circle,rgb(188, 54, 9) 0%,rgb(86, 224, 59) 100%);
     font-size: 1.2em;
     color: aliceblue;
   }
   form{
-    color: black;
-    width: fit-content;
-    padding: 8px;
-    box-shadow: -20px 10px 20px rgb(181, 97, 97);
-    border-radius: 20px;
-    background-color: rgb(55, 207, 182);
+    color: rgb(13, 13, 13);
+    width:fit-content;
+    padding: 0px;
+    box-shadow: -20px 10px 20px rgb(156, 15, 19);
+    border-radius: 10px;
+    background-color: rgb(43, 211, 223);
   }
 </style>
   </head>
   <body>
 
 <nav class="nav" style="background-color:rgb(138, 15, 145)">
+  
     <a href="{% url 'admin:index' %}" class="nav-link text-white">Admin Page</a>
     <a href="{% url 'registration' %}" class="nav-link text-white">Registration page</a>
 
     <a href="{% url 'home' %}" class="nav-link text-white">HomePage</a>
-
+    
 {% if user.is_authenticated %}
     <a href="{% url 'user_logout' %}" class="nav-link text-white">user_logout</a>
+    <a href="{% url 'display_details'%}"class="nav-link text-white">display_details</a>
+
+   <a href="{% url 'change_password' %}" class="nav-link">change_password</a>
+
 
 {% else %}
     <a href="{% url 'user_login' %}" class="nav-link text-white">user_login</a>
